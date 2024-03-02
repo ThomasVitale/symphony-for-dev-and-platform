@@ -67,20 +67,15 @@ spec:
         groupId:
           title: Group
           type: string
-          default: io.kadras
           description: Maven Group ID (e.g. io.kadras)
-          pattern: '^[\w\d-_\.]+$'
         artifactId:
           title: Artifact
           type: string
-          default: spring-boot-langchain4j-ollama
           description: Maven Artifact ID (e.g. demo)
-          pattern: '^[\w\d-_]+$'
         basePackage:
           title: Base Package
           type: string
           description: Base name for the Java package (e.g. io.kadras.demo)
-          pattern: '^[\w\d_\.]+$'
     
     - title: Application Dependencies
       required:
