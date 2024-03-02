@@ -85,10 +85,10 @@ spec:
           title: LLM Provider
           type: string
           description: Choose the large language model provider to integrate with
-          default: openAi
+          default: openai
           enum:
             - ollama
-            - openAi
+            - openai
           enumNames:
             - "Ollama"
             - "OpenAI"
@@ -96,6 +96,7 @@ spec:
           title: Vector Store
           type: string
           description: Choose the vector store to integrate with
+          default: weaviate
           enum:
             - chroma
             - weaviate
