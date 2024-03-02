@@ -2,7 +2,7 @@ spring:
   application:
     name: ${{ values.artifactId }}
 
-{%- if values.llmProvider == "openai" %}
+{% if values.llmProvider == "openai" %}
 langchain4j:
   openai:
     client:

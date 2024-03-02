@@ -19,7 +19,7 @@ import io.thomasvitale.langchain4j.testcontainers.service.containers.OllamaConta
 @TestConfiguration(proxyBeanMethods = false)
 public class TestDemoApplication {
 
-	{%-if values.llmProvider == "ollama" %}
+	{%- if values.llmProvider == "ollama" %}
 	@Bean
 	@RestartScope
 	@ServiceConnection
