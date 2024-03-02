@@ -2,16 +2,6 @@
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
-  name: domains
-  description: A collection of Domains
-spec:
-  targets:
-    - ./domains/*.yml
-
----
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
   name: groups
   description: A collection of Groups
 spec:
