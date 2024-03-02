@@ -12,12 +12,12 @@ spec:
     framework: spring-boot
     language: java
   serviceClaims:
-    {% if values.llmProvider == "openai" %}
+    {%- if values.llmProvider == "openai" %}
     - name: open-ai
-    {% endif %}
-    {% if values.vectorStore == "weaviate" %}
+    {%- endif %}
+    {%- if values.vectorStore == "weaviate" %}
     - name: weaviate
-    {% endif %}
-    {% if values.vectorStore == "chroma" %}
+    {%- endif %}
+    {%- if values.vectorStore == "chroma" %}
     - name: chroma
-    {% endif %}
+    {%- endif %}

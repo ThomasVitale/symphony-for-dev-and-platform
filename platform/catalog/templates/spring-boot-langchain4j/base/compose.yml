@@ -1,13 +1,13 @@
 services:
-  {% if values.vectorStore == "chroma" %}
+  {%- if values.vectorStore == "chroma" %}
   chroma:
     image: ghcr.io/chroma-core/chroma:0.4.24
     ports:
       - '8000'
     environment:
       ANONYMIZED_TELEMETRY: False
-  {% endif %}
-  {% if values.vectorStore == "weaviate" %}
+  {%- endif %}
+  {%- if values.vectorStore == "weaviate" %}
   weaviate:
     image: semitechnologies/weaviate:1.23.10
     command:
@@ -25,4 +25,4 @@ services:
       DEFAULT_VECTORIZER_MODULE: 'none'
       PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
       QUERY_DEFAULTS_LIMIT: 25
-  {% endif %}
+  {%- endif %}
