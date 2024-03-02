@@ -1,0 +1,12 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: lize.raes
+  title: Lize Raes
+  annotations:
+    github.com/user-login: LizeRaes
+spec:
+  memberOf: [athena-team, hephaestus-team]
+  profile:
+    displayName: Lize Raes

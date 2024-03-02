@@ -1,0 +1,8 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: ai
+  description: Everything about artificial intelligence
+spec:
+  owner: research-unit

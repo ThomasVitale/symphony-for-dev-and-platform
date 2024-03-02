@@ -1,0 +1,12 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: thomas.vitale
+  title: Thomas Vitale
+  annotations:
+    github.com/user-login: ThomasVitale
+spec:
+  memberOf: [poseidon-team, hephaestus-team]
+  profile:
+    displayName: Thomas Vitale

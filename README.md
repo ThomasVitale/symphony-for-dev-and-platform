@@ -1,1 +1,1 @@
-# symphony-for-dev-and-platform
+# Symphony for Developer and Platform Engineer
