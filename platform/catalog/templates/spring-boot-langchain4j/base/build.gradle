@@ -1,0 +1,65 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = '${{ values.groupId }}'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springLangchain4jVersion', "0.8.0")
+	set('testcontainers.version', "1.19.6")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+	implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+
+	{% if values.llmProvider == "ollama" %}
+	implementation "io.thomasvitale.langchain4j:langchain4j-ollama-spring-boot-starter:${springLangchain4jVersion}"
+	{% endif %}
+	{% if values.llmProvider == "openai" %}
+	implementation "io.thomasvitale.langchain4j:langchain4j-openai-spring-boot-starter:${springLangchain4jVersion}"
+	{% endif %}
+	{% if values.vectorStore == "chroma" %}
+	implementation "io.thomasvitale.langchain4j:langchain4j-chroma-spring-boot-starter:${springLangchain4jVersion}"
+	{% endif %}
+	{% if values.vectorStore == "weaviate" %}
+	implementation "io.thomasvitale.langchain4j:langchain4j-weaviate-spring-boot-starter:${springLangchain4jVersion}"
+	{% endif %}
+	implementation "io.thomasvitale.langchain4j:langchain4j-spring-cloud-bindings:${springLangchain4jVersion}"
+
+	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
+	developmentOnly "io.thomasvitale.langchain4j:langchain4j-spring-boot-docker-compose:${springLangchain4jVersion}"
+
+	testAndDevelopmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	{% if values.vectorStore == "chroma" %}
+	testImplementation 'org.testcontainers:chromadb'
+	{% endif %}
+	{% if values.vectorStore == "weaviate" %}
+	testImplementation 'org.testcontainers:weaviate'
+	{% endif %}
+
+	testImplementation "io.thomasvitale.langchain4j:langchain4j-spring-boot-testcontainers:${springLangchain4jVersion}"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

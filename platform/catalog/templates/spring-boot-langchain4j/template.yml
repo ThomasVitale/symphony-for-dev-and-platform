@@ -1,0 +1,193 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: spring-boot-langchain4j
+  title: Spring Boot LangChain4j
+  description: Spring Boot using Java and Gradle with LangChain4j integration to build LLM-powered applications.
+  tags:
+    - recommended
+    - java
+    - spring
+    - langchain4j
+    - ai
+spec:
+  owner: hephaestus-team
+  type: service
+
+  parameters:
+    - title: Application Information
+      required:
+        - name
+        - description
+        - owner
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:autofocus: true
+          ui:field: EntityNamePicker
+          maxLength: 63
+        description:
+          title: Description
+          type: string
+          description: Short explanation of what this service is for
+          ui:options:
+            rows: 5
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: [Group, User]
+    - title: Application Repository Information
+      required:
+        - repoUrl
+        - repoBranch
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+        repoBranch:
+          title: Repository Default Branch
+          type: string
+          default: main
+    - title: Java Project Metadata
+      required:
+        - groupId
+        - artifactId
+        - base_package
+      properties:
+        groupId:
+          title: Group
+          type: string
+          default: io.kadras
+          description: Maven Group ID (e.g. io.kadras)
+          pattern: '^[\w\d-_\.]+$'
+        artifactId:
+          title: Artifact
+          type: string
+          default: spring-boot-langchain4j-ollama
+          description: Maven Artifact ID (e.g. demo)
+          pattern: '^[\w\d-_]+$'
+        basePackage:
+          title: Base Package
+          type: string
+          description: Base name for the Java package (e.g. io.kadras.demo)
+          pattern: '^[\w\d_\.]+$'
+    
+    - title: Application Dependencies
+      required:
+        - llmProvider
+      properties:
+        llmProvider:
+          title: LLM Provider
+          type: string
+          description: Choose the large language model provider to integrate with
+          default: openAi
+          enum:
+            - ollama
+            - openAi
+          enumNames:
+            - "Ollama"
+            - "OpenAI"
+        vectorStore:
+          title: Vector Store
+          type: string
+          description: Choose the vector store to integrate with
+          enum:
+            - chroma
+            - weaviate
+          enumNames:
+            - "ChromaDB"
+            - "Weaviate"
+
+    - title: Deployment Information
+      required:
+        - workflowEngine
+      properties:
+        workflowEngine:
+          title: Workflow Engine
+          type: string
+          description: Choose the workflow engine to use for setting up a deployment pipeline
+          default: githubActions
+          enum:
+            - githubActions
+          enumNames:
+            - "GitHub Actions"
+  
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./base
+        values:
+          name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
+          repoBranch: ${{ parameters.repoBranch }}
+          groupId: ${{ parameters.groupId }}
+          artifactId: ${{ parameters.artifactId }}
+          basePackage: ${{ parameters.basePackage }}
+          basePackageDir: ${{ parameters.basePackage | replace(".", "/") }}
+          llmProvider: ${{ parameters.llmProvider }}
+          vectorStore: ${{ parameters.vectorStore }}
+    
+    - id: fetch-catalog-info
+      name: Fetch Catalog Info
+      action: fetch:template
+      input:
+        url: ../../skeletons/catalog-info/
+        values:
+          name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+          repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
+          repoBranch: ${{ parameters.repoBranch }}
+          groupId: ${{ parameters.groupId }}
+          artifactId: ${{ parameters.artifactId }}
+          basePackage: ${{ parameters.basePackage }}
+          basePackageDir: ${{ parameters.basePackage | replace(".", "/") }}
+          llmProvider: ${{ parameters.llmProvider }}
+          vectorStore: ${{ parameters.vectorStore }}
+          applicationType: service
+          lifecycle: experimental
+
+    - id: publish
+      name: Publish Application Repository
+      action: publish:github
+      input:
+        allowedHosts: ["github.com"]
+        description: ${{ parameters.description }}
+        repoUrl: ${{ parameters.repoUrl }}
+        repoVisibility: private
+        defaultBranch: main
+        gitAuthorName: ${{ user.entity.metadata.name }}
+        gitAuthorEmail: ${{ user.entity.spec.profile.email }}
+
+    - id: register
+      name: Register Catalog Entity
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yml"
+
+  output:
+    links:
+      - title: Open Application Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open Catalog Entity
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
+    text:
+    - title: More information
+      content: |
+        **Entity URL:** `${{ steps['publish'].output.remoteUrl }}`

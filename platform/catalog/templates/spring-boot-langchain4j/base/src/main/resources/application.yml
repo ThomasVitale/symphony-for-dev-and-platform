@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ${{ values.artifactId }}
+
+{% if values.llmProvider == "openai" %}
+langchain4j:
+  openai:
+    client:
+      api-key: ${OPENAI_API_KEY}
+{% endif %}
+
+management:
+  tracing:
+    enabled: false
