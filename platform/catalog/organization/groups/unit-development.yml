@@ -9,4 +9,4 @@ spec:
   type: business-unit
   children: [athena-team]
   profile:
-    displayName: Development
+    displayName: Development Unit

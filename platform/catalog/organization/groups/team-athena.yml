@@ -10,4 +10,4 @@ spec:
   parent: development-unit
   children: []
   profile:
-    displayName: Athena
+    displayName: Athena Team

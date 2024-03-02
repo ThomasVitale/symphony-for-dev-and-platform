@@ -9,4 +9,4 @@ spec:
   type: business-unit
   children: [poseidon-team]
   profile:
-    displayName: Platform
+    displayName: Platform Unit

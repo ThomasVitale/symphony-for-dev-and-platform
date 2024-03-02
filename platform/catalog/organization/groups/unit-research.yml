@@ -7,6 +7,6 @@ metadata:
   description: The research business unit
 spec:
   type: business-unit
-  children: [athena-team]
+  children: [hephaestus-team]
   profile:
-    displayName: Research
+    displayName: Research Unit
