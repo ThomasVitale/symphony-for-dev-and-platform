@@ -62,7 +62,7 @@ spec:
       required:
         - groupId
         - artifactId
-        - base_package
+        - basePackage
       properties:
         groupId:
           title: Group
