@@ -28,7 +28,7 @@ public class TestDemoApplication {
 	}
 	{% endif %}
 
-	{% if values.llmProvider == "chroma" %}
+	{% if values.vectorStore == "chroma" %}
 	@Bean
 	@RestartScope
 	@ServiceConnection
@@ -37,7 +37,7 @@ public class TestDemoApplication {
 	}
 	{% endif %}
 
-	{% if values.llmProvider == "weaviate" %}
+	{% if values.vectorStore == "weaviate" %}
 	@Bean
 	@RestartScope
 	@ServiceConnection

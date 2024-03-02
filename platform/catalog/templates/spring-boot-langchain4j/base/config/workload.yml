@@ -1,0 +1,23 @@
+---
+apiVersion: app.kadras.io/v1alpha1
+kind: Workload
+metadata:
+  name: ${{ values.name }}
+  labels:
+    app: ${{ values.name }}
+spec:
+  serviceAccountName: supply-chain
+  image: ghcr.io/${{ values.repoUrl.owner | lower }}/${{ values.repoUrl.repo }}
+  application:
+    framework: spring-boot
+    language: java
+  serviceClaims:
+    {% if values.llmProvider == "openai" %}
+    - name: open-ai
+    {% endif %}
+    {% if values.vectorStore == "weaviate" %}
+    - name: weaviate
+    {% endif %}
+    {% if values.vectorStore == "chroma" %}
+    - name: chroma
+    {% endif %}

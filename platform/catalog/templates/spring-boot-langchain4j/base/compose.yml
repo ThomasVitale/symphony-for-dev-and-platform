@@ -1,5 +1,4 @@
 services:
-  
   {% if values.vectorStore == "chroma" %}
   chroma:
     image: ghcr.io/chroma-core/chroma:0.4.24
@@ -8,7 +7,6 @@ services:
     environment:
       ANONYMIZED_TELEMETRY: False
   {% endif %}
-
   {% if values.vectorStore == "weaviate" %}
   weaviate:
     image: semitechnologies/weaviate:1.23.10

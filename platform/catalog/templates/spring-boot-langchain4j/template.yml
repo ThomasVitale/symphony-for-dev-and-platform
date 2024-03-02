@@ -54,6 +54,11 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+            requestUserCredentials:
+              secretsKey: USER_OAUTH_TOKEN
+              additionalScopes:
+                github:
+                  - workflow
         repoBranch:
           title: Repository Default Branch
           type: string
@@ -127,9 +132,7 @@ spec:
         values:
           name: ${{ parameters.name }}
           description: ${{ parameters.description }}
-          owner: ${{ parameters.owner }}
           repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
-          repoBranch: ${{ parameters.repoBranch }}
           groupId: ${{ parameters.groupId }}
           artifactId: ${{ parameters.artifactId }}
           basePackage: ${{ parameters.basePackage }}
@@ -147,13 +150,7 @@ spec:
           description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
           repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
-          repoBranch: ${{ parameters.repoBranch }}
           groupId: ${{ parameters.groupId }}
-          artifactId: ${{ parameters.artifactId }}
-          basePackage: ${{ parameters.basePackage }}
-          basePackageDir: ${{ parameters.basePackage | replace(".", "/") }}
-          llmProvider: ${{ parameters.llmProvider }}
-          vectorStore: ${{ parameters.vectorStore }}
           applicationType: service
           lifecycle: experimental
 
@@ -161,13 +158,16 @@ spec:
       name: Publish Application Repository
       action: publish:github
       input:
-        allowedHosts: ["github.com"]
-        description: ${{ parameters.description }}
         repoUrl: ${{ parameters.repoUrl }}
+        description: ${{ parameters.description }}
         repoVisibility: private
-        defaultBranch: main
-        gitAuthorName: ${{ user.entity.metadata.name }}
-        gitAuthorEmail: ${{ user.entity.spec.profile.email }}
+        defaultBranch: ${{ parameters.repoBranch }}
+        token: ${{ secrets.USER_OAUTH_TOKEN }}
+        topics:
+          - java
+          - spring-boot
+          - langchain4j
+          - ai
 
     - id: register
       name: Register Catalog Entity
