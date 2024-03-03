@@ -56,11 +56,6 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-            requestUserCredentials:
-              secretsKey: USER_OAUTH_TOKEN
-              additionalScopes:
-                github:
-                  - workflow
         repoBranch:
           title: Repository Default Branch
           type: string
@@ -168,7 +163,6 @@ spec:
         description: ${{ parameters.description }}
         repoVisibility: private
         defaultBranch: ${{ parameters.repoBranch }}
-        token: ${{ secrets.USER_OAUTH_TOKEN }}
         topics:
           - java
           - spring-boot
