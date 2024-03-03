@@ -42,7 +42,7 @@ jobs:
         with:
           username: ${{ ${{ github.actor }} }}
           password: ${{ ${{ secrets.GITHUB_TOKEN }} }}
-          registry: ${{ ${{ env.REGISTRY }} }}
+          registry: ${{ '${{ env.REGISTRY }}' }}
 
       - name: Publish OCI image
         run: |
