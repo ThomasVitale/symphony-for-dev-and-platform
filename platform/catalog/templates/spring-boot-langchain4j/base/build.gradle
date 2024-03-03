@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.3'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.cyclonedx.bom'
 }
 
 group = '${{ values.groupId }}'
@@ -62,4 +63,10 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+tasks.named('cyclonedxBom') {
+	outputFormat = "json"
+	projectType = "application"
+	schemaVersion = "1.5"
 }
