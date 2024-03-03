@@ -10,7 +10,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ values.repoUrl.owner | lower }}/${{ values.repoUrl.repo }}
-  VERSION: ${{ github.sha }}
+  VERSION: ${{ '${{ github.sha }}' }}
 
 jobs:
   build:
@@ -35,17 +35,17 @@ jobs:
         run: ./gradlew build
 
       - name: Package as OCI image
-        run: ./gradlew bootBuildImage --imageName ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+        run: ./gradlew bootBuildImage --imageName ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:${{ '${{ env.VERSION }}' }}
 
       - name: Authenticate with the container registry
         uses: docker/login-action@v3
         with:
-          username: ${{ ${{ github.actor }} }}
-          password: ${{ ${{ secrets.GITHUB_TOKEN }} }}
+          username: ${{ '${{ github.actor }}' }}
+          password: ${{ '${{ secrets.GITHUB_TOKEN }}' }}
           registry: ${{ '${{ env.REGISTRY }}' }}
 
       - name: Publish OCI image
         run: |
-          docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
-          docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          docker tag ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:${{ '${{ env.VERSION }}' }} ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:latest
+          docker push ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:${{ '${{ env.VERSION }}' }}
+          docker push ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:latest

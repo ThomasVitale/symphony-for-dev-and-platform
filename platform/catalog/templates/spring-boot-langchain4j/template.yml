@@ -51,6 +51,7 @@ spec:
         repoUrl:
           title: Repository Location
           type: string
+          ui:autofocus: true
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
@@ -75,6 +76,7 @@ spec:
           title: Group
           type: string
           description: Maven Group ID (e.g. io.kadras)
+          ui:autofocus: true
         artifactId:
           title: Artifact
           type: string
@@ -92,6 +94,7 @@ spec:
           title: LLM Provider
           type: string
           description: Choose the large language model provider to integrate with
+          ui:autofocus: true
           default: openai
           enum:
             - ollama
@@ -119,6 +122,7 @@ spec:
           title: Workflow Engine
           type: string
           description: Choose the workflow engine to use for setting up a deployment pipeline
+          ui:autofocus: true
           default: githubActions
           enum:
             - githubActions
