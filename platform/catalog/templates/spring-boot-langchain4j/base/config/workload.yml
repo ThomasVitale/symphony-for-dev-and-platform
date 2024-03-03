@@ -6,7 +6,6 @@ metadata:
   labels:
     app: ${{ values.name }}
 spec:
-  serviceAccountName: supply-chain
   image: ghcr.io/${{ values.repoUrl.owner | lower }}/${{ values.repoUrl.repo }}
   application:
     framework: spring-boot
