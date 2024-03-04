@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: composer-assistant
+
+langchain4j:
+  openai:
+    client:
+      api-key: ${OPENAI_API_KEY}
+
+management:
+  tracing:
+    enabled: false

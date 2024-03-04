@@ -1,0 +1,13 @@
+---
+apiVersion: app.kadras.io/v1alpha1
+kind: Workload
+metadata:
+  name: composer-assistant
+spec:
+  image: ghcr.io/thomasvitale/composer-assistant
+  application:
+    framework: spring-boot
+    language: java
+  serviceClaims:
+    - name: open-ai
+    - name: weaviate
