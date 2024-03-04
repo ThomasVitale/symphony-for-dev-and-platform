@@ -1,4 +1,4 @@
-package com.thomasvitale.demo;
+package io.kadras.music;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;

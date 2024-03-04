@@ -5,7 +5,7 @@ plugins {
 	id 'org.cyclonedx.bom' version '1.8.2'
 }
 
-group = 'com.thomasvitale'
+group = 'io.kadras.music'
 version = '0.0.1-SNAPSHOT'
 
 java {

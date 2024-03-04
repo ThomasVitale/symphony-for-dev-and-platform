@@ -1,4 +1,4 @@
-package com.thomasvitale.demo;
+package io.kadras.music;
 
 import dev.langchain4j.data.document.Document;
 import dev.langchain4j.data.document.DocumentParser;

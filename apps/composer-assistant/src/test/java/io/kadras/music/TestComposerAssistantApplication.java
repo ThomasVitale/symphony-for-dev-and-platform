@@ -1,4 +1,4 @@
-package com.thomasvitale.demo;
+package io.kadras.music;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.devtools.restart.RestartScope;
