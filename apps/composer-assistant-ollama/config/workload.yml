@@ -1,0 +1,13 @@
+---
+apiVersion: app.kadras.io/v1alpha1
+kind: Workload
+metadata:
+  name: composer-assistant-ollama
+spec:
+  image: ghcr.io/thomasvitale/composer-assistant-ollama
+  application:
+    framework: spring-boot
+    language: java
+  serviceClaims:
+    - name: ollama
+    - name: weaviate
