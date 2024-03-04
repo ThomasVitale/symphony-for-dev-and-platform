@@ -36,11 +36,11 @@ jobs:
         run: ./gradlew build
 
       - name: Package as OCI image
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ '${{ github.ref == 'refs/heads/main' }}' }}
         run: ./gradlew bootBuildImage --imageName ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:${{ '${{ env.VERSION }}' }}
 
       - name: Authenticate with the container registry
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ '${{ github.ref == 'refs/heads/main' }}' }}
         uses: docker/login-action@v3
         with:
           username: ${{ '${{ github.actor }}' }}
@@ -48,7 +48,7 @@ jobs:
           registry: ${{ '${{ env.REGISTRY }}' }}
 
       - name: Publish OCI image
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ '${{ github.ref == 'refs/heads/main' }}' }}
         run: |
           docker tag ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:${{ '${{ env.VERSION }}' }} ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:latest
           docker push ${{ '${{ env.REGISTRY }}' }}/${{ '${{ env.IMAGE_NAME }}' }}:${{ '${{ env.VERSION }}' }}
