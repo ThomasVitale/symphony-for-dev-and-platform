@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.nio.file.Path;
+// TODO What to do with logging slf4j -> for platform
 
 @SpringBootApplication
 public class ComposerAssistantApplication {
@@ -33,15 +34,20 @@ public class ComposerAssistantApplication {
 		SpringApplication.run(ComposerAssistantApplication.class, args);
 	}
 
+	// TODO split in subbeans? where/how are Weaviate and OpenAI injected exactly?
+	// TODO change to Mistral (key set in MISTRAL_AI_API_KEY system variable)
 	@Bean
-	ComposerAgent documentAgent(ChatLanguageModel chatLanguageModel, EmbeddingModel embeddingModel, EmbeddingStore<TextSegment> embeddingStore) throws IOException {
-		Path documentPath = ResourceUtils.getFile("classpath:documents/story.md").toPath();
+	ComposerAgent documentAgent(ChatLanguageModel chatLanguageModel, EmbeddingModel embeddingModel,
+								EmbeddingStore<TextSegment> embeddingStore, InstrumentCodeTools instrumentCodeTools) throws IOException {
+		// TODO add good descriptions for Thomas' instruments
+		Path documentPath = ResourceUtils.getFile("classpath:documents/virtual-instruments-of-thomas.txt").toPath();
 		DocumentParser documentParser = new TextDocumentParser();
 		Document document = FileSystemDocumentLoader.loadDocument(documentPath, documentParser);
 
 		EmbeddingStoreIngestor dataIngestor = EmbeddingStoreIngestor.builder()
 				.embeddingStore(embeddingStore)
 				.embeddingModel(embeddingModel)
+				// TODO make per paragraph splitter
 				.documentSplitter(DocumentSplitters.recursive(300, 10))
 				.build();
 		dataIngestor.ingest(document);
@@ -49,6 +55,7 @@ public class ComposerAssistantApplication {
 		ContentRetriever contentRetriever = EmbeddingStoreContentRetriever.builder()
 				.embeddingStore(embeddingStore)
 				.embeddingModel(embeddingModel)
+				// TODO tweak
 				.maxResults(3)
 				.minScore(0.5)
 				.build();
@@ -58,6 +65,7 @@ public class ComposerAssistantApplication {
 				.chatLanguageModel(chatLanguageModel)
 				.contentRetriever(contentRetriever)
 				.chatMemory(chatMemory)
+				.tools(instrumentCodeTools)
 				.build();
 	}
 
@@ -74,7 +82,17 @@ class ChatController {
 	
 	@PostMapping("/chat")
 	String chat(@RequestBody MusicPrompt prompt) {
-    	return composerAgent.answer(prompt.message());
+		String videoDescription = prompt.message();
+		// TODO use promptTemplate and SystemMessage
+
+		String SystemMessage = "You are a friendly assistant to a music composer who's working on the soundtrack for a movie. Whenever you get a question, you should provide concise and short answers, and not more than 3 options. When providing composition tips, explain step-by-step. The composer uses the Logic Pro X software as DAW, so make sure you tips are contextual to that software. A vocal soloist is also available.";
+
+		String instruction = "Can you recommend some chord progressions and virtual instruments to score a video " +
+				"fragment of ";
+
+		String engineeredPrompt = SystemMessage+ "\n\n" + instruction + videoDescription;
+
+		return composerAgent.answer(engineeredPrompt);
 	}
 
 }
