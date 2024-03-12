@@ -23,7 +23,7 @@ public class ComposerAgentConfig {
         ContentRetriever contentRetriever = EmbeddingStoreContentRetriever.builder()
                 .embeddingStore(embeddingStore)
                 .embeddingModel(embeddingModel)
-                .maxResults(7)
+                .maxResults(5)
                 .minScore(0.5)
                 .build();
 
