@@ -27,7 +27,9 @@ jobs:
           distribution: temurin
 
       - name: Compile and test
-        run: ./gradlew build
+        run: |
+          cd apps/composer-assistant
+          ./gradlew build
 
       - name: Package as OCI image
         run: |
