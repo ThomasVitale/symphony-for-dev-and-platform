@@ -5,6 +5,7 @@ platform:
     - crossplane
     - dapr
     - developer-portal
+    - gitops-configurer
     - rabbitmq-operator
     - service-binding
     - weaviate
@@ -37,6 +38,12 @@ developer_portal:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-http01-issuer
     host: backstage.test.kadras.dev
+
+gitops_configurer:
+  type: flux-kustomization
+  git:
+    url: https://github.com/ThomasVitale/symphony-for-dev-and-platform
+    path: gitops/clusters/test
 
 knative:
   serving:

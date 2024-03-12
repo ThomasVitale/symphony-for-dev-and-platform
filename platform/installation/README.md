@@ -76,6 +76,22 @@ Verify that all the platform components have been installed and properly reconci
   kctrl package installed list -n kadras-system
   ```
 
+### 7. Configure OpenAI
+
+If you want to run LLM-powered applications on the platform and integrate with OpenAI, you need to configure your own API Key.
+
+```shell script
+export OPENAI_API_KEY=<openai-api-key>
+```
+
+Then, store the API key in a dedicated Secret on the cluster.
+
+```shell script
+kubectl create secret generic openai-secret \
+  --from-literal=api-key="${OPENAI_API_KEY}" \
+  --namespace=kadras-system
+```
+
 ## Local Installation
 
 ### 0. Before you begin
@@ -172,6 +188,22 @@ Verify that all the platform components have been installed and properly reconci
   ```shell
   kctrl package installed list -n kadras-system
   ``` 
+
+### 8. Configure OpenAI
+
+If you want to run LLM-powered applications on the platform and integrate with OpenAI, you need to configure your own API Key.
+
+```shell script
+export OPENAI_API_KEY=<openai-api-key>
+```
+
+Then, store the API key in a dedicated Secret on the cluster.
+
+```shell script
+kubectl create secret generic openai-secret \
+  --from-literal=api-key="${OPENAI_API_KEY}" \
+  --namespace=kadras-system
+```
 
 ## Run an Application via CLI
 
