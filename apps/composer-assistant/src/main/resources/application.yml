@@ -10,8 +10,8 @@ langchain4j:
   openai:
     client:
       api-key: ${OPENAI_API_KEY}
-      log-requests: true
-      log-responses: true
+      log-requests: false
+      log-responses: false
 
 management:
   tracing:

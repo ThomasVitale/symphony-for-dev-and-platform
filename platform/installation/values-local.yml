@@ -5,9 +5,7 @@ platform:
   
   additional_packages:
     - crossplane
-    - dapr
     - developer-portal
-    - rabbitmq-operator
     - service-binding
     - weaviate
   
@@ -27,6 +25,10 @@ developer_portal:
             target: https://github.com/ThomasVitale/symphony-for-dev-and-platform/blob/main/platform/catalog/templates/catalog-info.yml
             rules:
               - allow: [Template, Location]
+          - type: url
+            target: https://github.com/ThomasVitale/symphony-for-dev-and-platform/blob/main/apps/composer-assistant/catalog-info.yml
+            rules:
+              - allow: [Component]
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: kadras-ca-issuer
