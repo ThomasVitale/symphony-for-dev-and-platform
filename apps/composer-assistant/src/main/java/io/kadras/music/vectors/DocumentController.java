@@ -14,7 +14,7 @@ public class DocumentController {
         this.documentInitializer = documentInitializer;
     }
 
-    @PostMapping("/docs")
+    @PostMapping("/api/docs")
     void loadDocuments() throws FileNotFoundException {
         documentInitializer.loadDocuments();
     }

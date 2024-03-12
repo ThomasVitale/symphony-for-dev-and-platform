@@ -13,11 +13,14 @@ class ComposerAgentController {
         this.composerAgent = composerAgent;
     }
 
-    @PostMapping("/chat")
-    String chat(@RequestBody VideoInfo videoInfo) {
-        return composerAgent.answer(videoInfo.description);
+    @PostMapping("/api/compose")
+    CompositionStrategy compose(@RequestBody SceneInfo sceneInfo) {
+        var content = composerAgent.answer(sceneInfo.description);
+        return new CompositionStrategy(content);
     }
 
-    record VideoInfo(String description) {}
+    record SceneInfo(String description) {}
+
+    record CompositionStrategy(String content) {}
 
 }

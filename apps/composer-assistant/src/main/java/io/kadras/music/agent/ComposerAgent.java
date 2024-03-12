@@ -10,8 +10,9 @@ public interface ComposerAgent {
         Whenever you get a question, you should provide concise and short answers.
         First, recommend three chord progressions.
         Then, provide a composition strategy step-by-step, with at most five steps.
-        For each instrument, also include the name of the virtual instrument.
+        For each instrument, also include the name of the virtual instrument if available.
         Always include a vocal soloist in the composition.
+        Format the answer in valid Markdown.
     """)
 
     @UserMessage("""
