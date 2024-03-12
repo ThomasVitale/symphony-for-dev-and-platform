@@ -6,7 +6,7 @@ metadata:
   description: An AI assistant for music composers
   annotations:
     backstage.io/techdocs-ref: dir:.
-    github.com/project-slug: ThomasVitale/composer-assistant
+    github.com/project-slug: ThomasVitale/symphony-for-dev-and-platform
 spec:
   type: service
   lifecycle: experimental
