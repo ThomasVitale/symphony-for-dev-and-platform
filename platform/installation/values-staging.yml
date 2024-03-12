@@ -48,9 +48,3 @@ gitops_configurer:
   git:
     url: https://github.com/ThomasVitale/symphony-for-dev-and-platform
     path: gitops/clusters/test
-
-knative:
-  serving:
-    config:
-      network:
-        domain-template: "{{.Name}}-{{.Namespace}}.{{.Domain}}"

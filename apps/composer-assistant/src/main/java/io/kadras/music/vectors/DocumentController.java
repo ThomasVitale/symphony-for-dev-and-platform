@@ -8,15 +8,15 @@ import java.io.FileNotFoundException;
 @RestController
 public class DocumentController {
 
-    private final DocumentInitializer documentInitializer;
+    private final DocumentLoader documentLoader;
 
-    DocumentController(DocumentInitializer documentInitializer) {
-        this.documentInitializer = documentInitializer;
+    DocumentController(DocumentLoader documentLoader) {
+        this.documentLoader = documentLoader;
     }
 
     @PostMapping("/api/docs")
     void loadDocuments() throws FileNotFoundException {
-        documentInitializer.loadDocuments();
+        documentLoader.loadDocuments();
     }
 
 }
