@@ -3,13 +3,10 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: thomasvitale/composer-assistant-ollama
+  IMAGE_NAME: thomasvitale/composer-assistant
   VERSION: ${{ github.sha }}
 
 jobs:
@@ -29,15 +26,13 @@ jobs:
           java-version: 21
           distribution: temurin
 
-      - name: Generate SBOM
-        run: ./gradlew cyclonedxBom
-
       - name: Compile and test
         run: ./gradlew build
 
       - name: Package as OCI image
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: ./gradlew bootBuildImage --imageName ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+        run: |
+          cd apps/composer-assistant
+          ./gradlew bootBuildImage --imageName ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
 
       - name: Authenticate with the container registry
         if: ${{ github.ref == 'refs/heads/main' }}
