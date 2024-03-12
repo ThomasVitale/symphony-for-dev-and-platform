@@ -1,0 +1,33 @@
+platform:
+  profile: run
+
+  infrastructure_provider: local
+  
+  additional_packages:
+    - crossplane
+    - dapr
+    - developer-portal
+    - rabbitmq-operator
+    - service-binding
+    - weaviate
+  
+  ingress:
+    domain: 127.0.0.1.sslip.io
+
+developer_portal:
+  backstage:
+    appConfig:
+      catalog:
+        locations:
+          - type: url
+            target: https://github.com/ThomasVitale/symphony-for-dev-and-platform/blob/main/platform/catalog/organization/catalog-info.yml
+            rules:
+              - allow: [User, Group, Location]
+          - type: url
+            target: https://github.com/ThomasVitale/symphony-for-dev-and-platform/blob/main/platform/catalog/templates/catalog-info.yml
+            rules:
+              - allow: [Template, Location]
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: kadras-ca-issuer
+    host: backstage.127.0.0.1.sslip.io

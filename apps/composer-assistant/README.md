@@ -35,5 +35,5 @@ You can now call the application that will use OpenAI and _gpt-3.5-turbo_ by def
 based on the information loaded at startup time. This example uses [httpie](https://httpie.io) to send HTTP requests.
 
 ```shell
-http :8080/chat message="Who is Clara?"
+http :8080/chat description="A mysterious character who is a master of the violin and has a dark past."
 ```

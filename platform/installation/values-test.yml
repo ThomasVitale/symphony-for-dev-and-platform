@@ -1,0 +1,45 @@
+platform:
+  profile: run
+  
+  additional_packages:
+    - crossplane
+    - dapr
+    - developer-portal
+    - rabbitmq-operator
+    - service-binding
+    - weaviate
+  
+  ingress:
+    domain: test.kadras.dev
+    issuer:
+      type: letsencrypt
+      email: security@kadras.io
+
+contour:
+  certificates:
+    useCertManager: true
+
+developer_portal:
+  backstage:
+    replicas: 2
+    appConfig:
+      catalog:
+        locations:
+          - type: url
+            target: https://github.com/ThomasVitale/symphony-for-dev-and-platform/blob/main/platform/catalog/organization/catalog-info.yml
+            rules:
+              - allow: [User, Group, Location]
+          - type: url
+            target: https://github.com/ThomasVitale/symphony-for-dev-and-platform/blob/main/platform/catalog/templates/catalog-info.yml
+            rules:
+              - allow: [Template, Location]
+  ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-http01-issuer
+    host: backstage.test.kadras.dev
+
+knative:
+  serving:
+    config:
+      network:
+        domain-template: "{{.Name}}-{{.Namespace}}.{{.Domain}}"

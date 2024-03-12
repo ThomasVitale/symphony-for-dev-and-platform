@@ -19,8 +19,8 @@ repositories {
 }
 
 ext {
-	set('springLangchain4jVersion', "0.8.0")
-	set('testcontainers.version', "1.19.6")
+	set('springLangchain4jVersion', "0.9.0")
+	set('testcontainers.version', "1.19.7")
 }
 
 dependencies {
@@ -29,6 +29,7 @@ dependencies {
 	implementation 'io.micrometer:micrometer-tracing-bridge-otel'
 	implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
 
+	implementation "io.thomasvitale.langchain4j:langchain4j-ollama-spring-boot-starter:${springLangchain4jVersion}"
 	implementation "io.thomasvitale.langchain4j:langchain4j-openai-spring-boot-starter:${springLangchain4jVersion}"
 	implementation "io.thomasvitale.langchain4j:langchain4j-weaviate-spring-boot-starter:${springLangchain4jVersion}"
 	implementation "io.thomasvitale.langchain4j:langchain4j-spring-cloud-bindings:${springLangchain4jVersion}"
@@ -42,6 +43,7 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:ollama'
 	testImplementation 'org.testcontainers:weaviate'
 }
 

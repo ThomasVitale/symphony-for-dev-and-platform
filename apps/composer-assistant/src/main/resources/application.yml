@@ -1,8 +1,12 @@
 spring:
   application:
     name: composer-assistant
+  profiles:
+    active: local
 
 langchain4j:
+  ollama:
+    enabled: false
   openai:
     client:
       api-key: ${OPENAI_API_KEY}
