@@ -12,6 +12,9 @@ data:
       shutdown: graceful
       lifecycle:
         timeout-per-shutdown-phase: 24s
+    spring:
+      profiles:
+        active: prod
     management:
       server:
         port: 8081
