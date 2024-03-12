@@ -5,4 +5,4 @@ kind: Kustomization
 namespace: default
 
 resources:
-  - github.com/ThomasVitale/symphony-for-dev-and-platform/apps/composer-assistant/config/workload.yml?ref=main
+  - ../../../apps/composer-assistant/config/workload.yml
