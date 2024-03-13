@@ -33,3 +33,7 @@ developer_portal:
     annotations:
       cert-manager.io/cluster-issuer: kadras-ca-issuer
     host: backstage.127.0.0.1.sslip.io
+
+flux:
+  optional_components:
+    helm_controller: true

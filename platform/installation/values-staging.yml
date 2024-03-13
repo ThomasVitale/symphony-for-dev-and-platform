@@ -3,15 +3,13 @@ platform:
   
   additional_packages:
     - crossplane
-    - dapr
     - developer-portal
     - gitops-configurer
-    - rabbitmq-operator
     - service-binding
     - weaviate
   
   ingress:
-    domain: test.kadras.dev
+    domain: staging.kadras.dev
     issuer:
       type: letsencrypt
       email: security@kadras.io
@@ -41,7 +39,7 @@ developer_portal:
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-http01-issuer
-    host: backstage.test.kadras.dev
+    host: backstage.staging.kadras.dev
 
 flux:
   optional_components:
@@ -51,4 +49,4 @@ gitops_configurer:
   type: flux-kustomization
   git:
     url: https://github.com/ThomasVitale/symphony-for-dev-and-platform
-    path: gitops/clusters/test
+    path: gitops/clusters/staging
