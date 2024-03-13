@@ -129,8 +129,9 @@ spec:
         hosts:
           - grafana.test.kadras.dev
         tls:
-          enabled: true
-          secretName: grafana-tls-certificate
+          - secretName: grafana-tls-certificate
+            hosts:
+              - grafana.test.kadras.dev
       persistence:
         enabled: true
       # See: https://github.com/grafana/helm-charts/issues/1746
