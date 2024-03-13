@@ -43,6 +43,10 @@ developer_portal:
       cert-manager.io/cluster-issuer: letsencrypt-http01-issuer
     host: backstage.test.kadras.dev
 
+flux:
+  optional_components:
+    helm_controller: true
+
 gitops_configurer:
   type: flux-kustomization
   git:
