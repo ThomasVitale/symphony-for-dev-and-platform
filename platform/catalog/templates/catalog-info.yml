@@ -6,4 +6,5 @@ metadata:
   description: A collection of Templates
 spec:
   targets:
+    - ./carvel-package/template.yml
     - ./spring-boot-langchain4j/template.yml
