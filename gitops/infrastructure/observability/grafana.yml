@@ -74,11 +74,16 @@ spec:
     loki:
       enabled: true
       image:
+        registry: docker.io
+        repository: grafana/loki
         tag: 2.6.1
       config:
-        ingester:
-          wal:
-            dir: /data/loki/wal
+        analytics:
+          reporting_enabled: false
+      query_scheduler:
+        max_outstanding_requests_per_tenant: 2048
+      storage:
+        type: filesystem
 
     promtail:
       enabled: true
@@ -99,10 +104,26 @@ spec:
       service:
         type: ClusterIP
       grafana.ini:
+        analytics:
+          enabled: false
+          reporting_enabled: false
+          check_for_updates: false
+          check_for_plugin_updates: false
+          feedback_links_enabled: false
         feature_toggles:
-          enable: tempoSearch tempoBackendSearch tempoApmTable traceToMetrics
+          enable: correlations dataSourcePageHeader traceToMetrics scenes showDashboardValidationWarnings extraThemes lokiPredefinedOperations lokiFormatQuery exploreScrollableLogsContainer vizAndWidgetSplit logsExploreTableVisualisation metricsSummary featureToggleAdminPage httpSLOLevels enableNativeHTTPHistogram
+        news:
+          news_feed_enabled: false
+        paths:
+          temp_data_lifetime: 1h
         server:
           domain: grafana.test.kadras.dev
+          enable_gzip: true
+        snapshots:
+          enabled: false
+          external_enabled: false
+        users:
+          default_theme: light
       ingress:
         enabled: true
         ingressClassName: contour

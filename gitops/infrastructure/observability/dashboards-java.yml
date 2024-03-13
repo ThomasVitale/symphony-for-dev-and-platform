@@ -23,12 +23,6 @@ data:
             "limit": 100,
             "name": "Annotations & Alerts",
             "showIn": 0,
-            "target": {
-              "limit": 100,
-              "matchAny": false,
-              "tags": [],
-              "type": "dashboard"
-            },
             "type": "dashboard"
           },
           {
@@ -59,8 +53,8 @@ data:
         {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
@@ -73,8 +67,8 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -93,17 +87,7 @@ data:
                 "mode": "thresholds"
               },
               "decimals": 1,
-              "mappings": [
-                {
-                  "options": {
-                    "match": "null",
-                    "result": {
-                      "text": "N/A"
-                    }
-                  },
-                  "type": "special"
-                }
-              ],
+              "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
@@ -122,7 +106,7 @@ data:
             "overrides": []
           },
           "gridPos": {
-            "h": 4,
+            "h": 3,
             "w": 6,
             "x": 0,
             "y": 1
@@ -142,9 +126,10 @@ data:
               "fields": "",
               "values": false
             },
+            "text": {},
             "textMode": "auto"
           },
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "targets": [
             {
               "datasource": {
@@ -173,17 +158,7 @@ data:
               "color": {
                 "mode": "thresholds"
               },
-              "mappings": [
-                {
-                  "options": {
-                    "match": "null",
-                    "result": {
-                      "text": "N/A"
-                    }
-                  },
-                  "type": "special"
-                }
-              ],
+              "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
@@ -202,7 +177,7 @@ data:
             "overrides": []
           },
           "gridPos": {
-            "h": 4,
+            "h": 3,
             "w": 6,
             "x": 6,
             "y": 1
@@ -222,9 +197,10 @@ data:
               "fields": "",
               "values": false
             },
+            "text": {},
             "textMode": "auto"
           },
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "targets": [
             {
               "datasource": {
@@ -254,17 +230,7 @@ data:
                 "mode": "thresholds"
               },
               "decimals": 2,
-              "mappings": [
-                {
-                  "options": {
-                    "match": "null",
-                    "result": {
-                      "text": "N/A"
-                    }
-                  },
-                  "type": "special"
-                }
-              ],
+              "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
@@ -287,7 +253,7 @@ data:
             "overrides": []
           },
           "gridPos": {
-            "h": 4,
+            "h": 3,
             "w": 6,
             "x": 12,
             "y": 1
@@ -307,9 +273,10 @@ data:
               "fields": "",
               "values": false
             },
+            "text": {},
             "textMode": "auto"
           },
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "targets": [
             {
               "datasource": {
@@ -338,27 +305,7 @@ data:
                 "mode": "thresholds"
               },
               "decimals": 2,
-              "mappings": [
-                {
-                  "options": {
-                    "match": "null",
-                    "result": {
-                      "text": "N/A"
-                    }
-                  },
-                  "type": "special"
-                },
-                {
-                  "options": {
-                    "from": -1e+32,
-                    "result": {
-                      "text": "N/A"
-                    },
-                    "to": 0
-                  },
-                  "type": "range"
-                }
-              ],
+              "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
@@ -381,7 +328,7 @@ data:
             "overrides": []
           },
           "gridPos": {
-            "h": 4,
+            "h": 3,
             "w": 6,
             "x": 18,
             "y": 1
@@ -401,9 +348,10 @@ data:
               "fields": "",
               "values": false
             },
+            "text": {},
             "textMode": "auto"
           },
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "targets": [
             {
               "datasource": {
@@ -424,22 +372,22 @@ data:
         {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 5
+            "y": 4
           },
           "id": 126,
           "panels": [],
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -462,7 +410,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 0,
-            "y": 6
+            "y": 5
           },
           "hiddenSeries": false,
           "id": 111,
@@ -483,7 +431,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -553,7 +501,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 6,
-            "y": 6
+            "y": 5
           },
           "hiddenSeries": false,
           "id": 112,
@@ -574,7 +522,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -641,7 +589,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 12,
-            "y": 6
+            "y": 5
           },
           "hiddenSeries": false,
           "id": 113,
@@ -662,7 +610,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -676,19 +624,29 @@ data:
                 "type": "prometheus",
                 "uid": "prometheus"
               },
-              "editorMode": "code",
-              "expr": "max(http_server_requests_seconds_max{application=\"$application\", instance=\"$instance\"})",
+              "expr": "sum(rate(http_server_requests_seconds_sum{application=\"$application\", instance=\"$instance\", status!~\"5..\"}[1m]))/sum(rate(http_server_requests_seconds_count{application=\"$application\", instance=\"$instance\", status!~\"5..\"}[1m]))",
+              "format": "time_series",
+              "hide": false,
+              "intervalFactor": 1,
+              "legendFormat": "HTTP - AVG",
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "max(http_server_requests_seconds_max{application=\"$application\", instance=\"$instance\", status!~\"5..\"})",
               "format": "time_series",
               "hide": false,
               "intervalFactor": 1,
               "legendFormat": "HTTP - MAX",
-              "range": true,
               "refId": "B"
             }
           ],
           "thresholds": [],
           "timeRegions": [],
-          "title": "Overall Latency",
+          "title": "Duration",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -702,14 +660,12 @@ data:
           },
           "yaxes": [
             {
-              "$$hashKey": "object:246",
               "format": "s",
               "logBase": 1,
               "min": "0",
               "show": true
             },
             {
-              "$$hashKey": "object:247",
               "format": "short",
               "logBase": 1,
               "show": true
@@ -735,7 +691,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 18,
-            "y": 6
+            "y": 5
           },
           "hiddenSeries": false,
           "id": 119,
@@ -757,7 +713,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -873,22 +829,22 @@ data:
         {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 13
+            "y": 12
           },
           "id": 127,
           "panels": [],
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -915,9 +871,9 @@ data:
           },
           "gridPos": {
             "h": 7,
-            "w": 8,
+            "w": 6,
             "x": 0,
-            "y": 14
+            "y": 13
           },
           "hiddenSeries": false,
           "id": 24,
@@ -938,7 +894,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1042,9 +998,9 @@ data:
           },
           "gridPos": {
             "h": 7,
-            "w": 8,
-            "x": 8,
-            "y": 14
+            "w": 6,
+            "x": 6,
+            "y": 13
           },
           "hiddenSeries": false,
           "id": 25,
@@ -1065,7 +1021,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1170,9 +1126,9 @@ data:
           },
           "gridPos": {
             "h": 7,
-            "w": 8,
-            "x": 16,
-            "y": 14
+            "w": 6,
+            "x": 12,
+            "y": 13
           },
           "hiddenSeries": false,
           "id": 26,
@@ -1194,7 +1150,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "10.1.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1281,24 +1237,162 @@ data:
           }
         },
         {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "fillGradient": 0,
+          "grid": {
+            "leftLogBase": 1,
+            "rightLogBase": 1
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 6,
+            "x": 18,
+            "y": 13
+          },
+          "hiddenSeries": false,
+          "id": 86,
+          "legend": {
+            "avg": false,
+            "current": true,
+            "max": true,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "10.1.1",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "process_memory_vss_bytes{application=\"$application\", instance=\"$instance\"}",
+              "format": "time_series",
+              "hide": true,
+              "intervalFactor": 2,
+              "legendFormat": "vss",
+              "metric": "",
+              "refId": "A",
+              "step": 2400
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "process_memory_rss_bytes{application=\"$application\", instance=\"$instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "rss",
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "process_memory_swap_bytes{application=\"$application\", instance=\"$instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "swap",
+              "refId": "C"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "prometheus"
+              },
+              "expr": "process_memory_rss_bytes{application=\"$application\", instance=\"$instance\"} + process_memory_swap_bytes{application=\"$application\", instance=\"$instance\"}",
+              "format": "time_series",
+              "intervalFactor": 2,
+              "legendFormat": "total",
+              "refId": "D"
+            }
+          ],
+          "thresholds": [],
+          "timeRegions": [],
+          "title": "JVM Process Memory",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 0,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "xaxis": {
+            "mode": "time",
+            "show": true,
+            "values": []
+          },
+          "y-axis": true,
+          "y_formats": [
+            "mbytes",
+            "short"
+          ],
+          "yaxes": [
+            {
+              "format": "bytes",
+              "label": "",
+              "logBase": 1,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "logBase": 1,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false
+          }
+        },
+        {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 21
+            "y": 20
           },
           "id": 128,
           "panels": [],
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -1327,7 +1421,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 0,
-            "y": 22
+            "y": 21
           },
           "hiddenSeries": false,
           "id": 106,
@@ -1348,7 +1442,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1458,7 +1552,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 6,
-            "y": 22
+            "y": 21
           },
           "hiddenSeries": false,
           "id": 93,
@@ -1479,7 +1573,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1574,7 +1668,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 12,
-            "y": 22
+            "y": 21
           },
           "hiddenSeries": false,
           "id": 32,
@@ -1595,7 +1689,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1717,7 +1811,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 18,
-            "y": 22
+            "y": 21
           },
           "hiddenSeries": false,
           "id": 124,
@@ -1740,7 +1834,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1818,7 +1912,7 @@ data:
             "h": 7,
             "w": 18,
             "x": 0,
-            "y": 29
+            "y": 28
           },
           "height": "",
           "hiddenSeries": false,
@@ -1844,7 +1938,7 @@ data:
             "alertThreshold": true
           },
           "percentage": true,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -1937,7 +2031,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 18,
-            "y": 29
+            "y": 28
           },
           "hiddenSeries": false,
           "id": 61,
@@ -1958,7 +2052,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2038,14 +2132,14 @@ data:
         {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 36
+            "y": 35
           },
           "id": 129,
           "panels": [],
@@ -2053,8 +2147,8 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -2083,7 +2177,7 @@ data:
             "h": 7,
             "w": 8,
             "x": 0,
-            "y": 37
+            "y": 36
           },
           "hiddenSeries": false,
           "id": 3,
@@ -2107,7 +2201,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2204,22 +2298,22 @@ data:
         {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 44
+            "y": 43
           },
           "id": 130,
           "panels": [],
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -2248,7 +2342,7 @@ data:
             "h": 7,
             "w": 8,
             "x": 0,
-            "y": 45
+            "y": 44
           },
           "hiddenSeries": false,
           "id": 78,
@@ -2272,7 +2366,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2369,22 +2463,22 @@ data:
         {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 52
+            "y": 51
           },
           "id": 131,
           "panels": [],
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -2407,7 +2501,7 @@ data:
             "h": 7,
             "w": 8,
             "x": 0,
-            "y": 53
+            "y": 52
           },
           "hiddenSeries": false,
           "id": 98,
@@ -2428,7 +2522,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2497,7 +2591,7 @@ data:
             "h": 7,
             "w": 8,
             "x": 8,
-            "y": 53
+            "y": 52
           },
           "hiddenSeries": false,
           "id": 101,
@@ -2518,7 +2612,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2601,7 +2695,7 @@ data:
             "h": 7,
             "w": 8,
             "x": 16,
-            "y": 53
+            "y": 52
           },
           "hiddenSeries": false,
           "id": 99,
@@ -2622,7 +2716,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2690,22 +2784,22 @@ data:
         {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 60
+            "y": 59
           },
           "id": 132,
           "panels": [],
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -2734,7 +2828,7 @@ data:
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 61
+            "y": 60
           },
           "hiddenSeries": false,
           "id": 37,
@@ -2755,7 +2849,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2837,7 +2931,7 @@ data:
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 61
+            "y": 60
           },
           "hiddenSeries": false,
           "id": 38,
@@ -2858,7 +2952,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -2924,22 +3018,22 @@ data:
         {
           "collapsed": false,
           "datasource": {
-            "type": "tempo",
-            "uid": "tempo"
+            "type": "loki",
+            "uid": "loki"
           },
           "gridPos": {
             "h": 1,
             "w": 24,
             "x": 0,
-            "y": 68
+            "y": 67
           },
           "id": 133,
           "panels": [],
           "targets": [
             {
               "datasource": {
-                "type": "tempo",
-                "uid": "tempo"
+                "type": "loki",
+                "uid": "loki"
               },
               "refId": "A"
             }
@@ -2968,7 +3062,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 0,
-            "y": 69
+            "y": 68
           },
           "hiddenSeries": false,
           "id": 33,
@@ -2989,7 +3083,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3084,7 +3178,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 6,
-            "y": 69
+            "y": 68
           },
           "hiddenSeries": false,
           "id": 83,
@@ -3105,7 +3199,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3188,7 +3282,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 12,
-            "y": 69
+            "y": 68
           },
           "hiddenSeries": false,
           "id": 85,
@@ -3209,7 +3303,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3304,7 +3398,7 @@ data:
             "h": 7,
             "w": 6,
             "x": 18,
-            "y": 69
+            "y": 68
           },
           "hiddenSeries": false,
           "id": 84,
@@ -3325,7 +3419,7 @@ data:
             "alertThreshold": true
           },
           "percentage": false,
-          "pluginVersion": "9.2.6",
+          "pluginVersion": "8.0.1",
           "pointradius": 5,
           "points": false,
           "renderer": "flot",
@@ -3388,8 +3482,8 @@ data:
           }
         }
       ],
-      "refresh": "5s",
-      "schemaVersion": 37,
+      "refresh": "30s",
+      "schemaVersion": 38,
       "style": "dark",
       "tags": [],
       "templating": {
@@ -3397,8 +3491,8 @@ data:
           {
             "current": {
               "selected": false,
-              "text": "tea-service",
-              "value": "tea-service"
+              "text": "metrics-otel",
+              "value": "metrics-otel"
             },
             "datasource": {
               "type": "prometheus",
@@ -3428,14 +3522,14 @@ data:
             "allFormat": "glob",
             "current": {
               "selected": false,
-              "text": "192.168.0.113:tea-service:8090",
-              "value": "192.168.0.113:tea-service:8090"
+              "text": "otel-collector:8889",
+              "value": "otel-collector:8889"
             },
             "datasource": {
               "type": "prometheus",
               "uid": "prometheus"
             },
-            "definition": "",
+            "definition": "label_values(system_cpu_count{application=\"$application\"},instance)",
             "hide": 0,
             "includeAll": false,
             "label": "Instance",
@@ -3444,8 +3538,8 @@ data:
             "name": "instance",
             "options": [],
             "query": {
-              "query": "label_values(jvm_memory_used_bytes{application=\"$application\"}, instance)",
-              "refId": "Prometheus-instance-Variable-Query"
+              "query": "label_values(system_cpu_count{application=\"$application\"},instance)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
             },
             "refresh": 2,
             "regex": "",
@@ -3467,7 +3561,7 @@ data:
               "type": "prometheus",
               "uid": "prometheus"
             },
-            "definition": "",
+            "definition": "label_values(system_cpu_count{application=\"$application\", instance=\"$instance\", area=\"heap\"},id)",
             "hide": 0,
             "includeAll": true,
             "label": "JVM Memory Pools Heap",
@@ -3476,8 +3570,8 @@ data:
             "name": "jvm_memory_pool_heap",
             "options": [],
             "query": {
-              "query": "label_values(jvm_memory_used_bytes{application=\"$application\", instance=\"$instance\", area=\"heap\"},id)",
-              "refId": "Prometheus-jvm_memory_pool_heap-Variable-Query"
+              "query": "label_values(system_cpu_count{application=\"$application\", instance=\"$instance\", area=\"heap\"},id)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
             },
             "refresh": 1,
             "regex": "",
@@ -3499,7 +3593,7 @@ data:
               "type": "prometheus",
               "uid": "prometheus"
             },
-            "definition": "",
+            "definition": "label_values(jvm_memory_max_bytes{application=\"$application\", instance=\"$instance\", area=\"nonheap\"},id)",
             "hide": 0,
             "includeAll": true,
             "label": "JVM Memory Pools Non-Heap",
@@ -3508,8 +3602,8 @@ data:
             "name": "jvm_memory_pool_nonheap",
             "options": [],
             "query": {
-              "query": "label_values(jvm_memory_used_bytes{application=\"$application\", instance=\"$instance\", area=\"nonheap\"},id)",
-              "refId": "Prometheus-jvm_memory_pool_nonheap-Variable-Query"
+              "query": "label_values(jvm_memory_max_bytes{application=\"$application\", instance=\"$instance\", area=\"nonheap\"},id)",
+              "refId": "PrometheusVariableQueryEditor-VariableQuery"
             },
             "refresh": 1,
             "regex": "",
@@ -3523,7 +3617,7 @@ data:
         ]
       },
       "time": {
-        "from": "now-5m",
+        "from": "now-15m",
         "to": "now"
       },
       "timepicker": {
@@ -3553,8 +3647,8 @@ data:
         ]
       },
       "timezone": "browser",
-      "title": "JVM (Micrometer)",
-      "uid": "NpQ-vNF4k",
+      "title": "JVM Dashboard",
+      "uid": "jvm-micrometer",
       "version": 1,
       "weekStart": ""
     }
