@@ -6,3 +6,8 @@ namespace: default
 
 resources:
   - ../../../apps/composer-assistant/config/workload.yml
+
+patches:
+  - path: patch-observability.yml
+    target:
+      kind: Workload
