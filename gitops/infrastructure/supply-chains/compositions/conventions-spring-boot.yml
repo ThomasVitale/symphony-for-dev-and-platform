@@ -28,6 +28,24 @@ data:
       health:
         probes:
           enabled: true
+      metrics:
+        tags:
+          application: ${spring.application.name}
+        distribution:
+          percentiles-histogram:
+            all: true
+            http.server.requests: true
+      opentelemetry:
+        resource-attributes:
+          application: ${spring.application.name}
+          "service.name": ${spring.application.name}
+      prometheus:
+        metrics:
+          export:
+            step: 5s
+      tracing:
+        sampling:
+          probability: 1.0
   livenessProbe:
     successThreshold: 1
     failureThreshold: 3
