@@ -7,4 +7,6 @@ metadata:
 spec:
   targets:
     - ./carvel-package/template.yml
+    - ./python-langchain/template.yml
+    - ./spring-boot-dapr/template.yml
     - ./spring-boot-langchain4j/template.yml
