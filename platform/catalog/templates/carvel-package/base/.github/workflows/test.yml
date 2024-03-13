@@ -1,0 +1,22 @@
+name: Test
+
+on:
+  - push
+
+jobs:
+  test-config:
+    name: Configuration Tests
+    permissions:
+      contents: read
+    uses: kadras-io/github-reusable-workflows/.github/workflows/carvel-package-test-config.yml@main
+
+  test-integration:
+    name: Integration Tests
+    strategy:
+      matrix:
+        k8s_version: [v1.27, v1.28, v1.29]
+    permissions:
+      contents: read
+    uses: kadras-io/github-reusable-workflows/.github/workflows/carvel-package-test-integration.yml@main
+    with:
+      k8s_version: ${{ '${{ matrix.k8s_version }}' }}

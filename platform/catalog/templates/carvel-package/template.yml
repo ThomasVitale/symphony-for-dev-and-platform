@@ -1,21 +1,18 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: spring-boot-langchain4j
-  title: Spring Boot LangChain4j
-  description: Spring Boot using Java and Gradle with LangChain4j integration to build LLM-powered applications.
+  name: carvel-package
+  title: Carvel Package
+  description: Kubernetes-native package to implement a platform capability using Carvel.
   tags:
     - recommended
-    - java
-    - spring
-    - langchain4j
-    - ai
+    - platform-engineering
 spec:
-  owner: hephaestus-team
-  type: service
+  owner: poseidon-team
+  type: capability
 
   parameters:
-    - title: Application Information
+    - title: Package Information
       required:
         - name
         - description
@@ -31,9 +28,13 @@ spec:
         description:
           title: Description
           type: string
-          description: Short explanation of what this service is for
+          description: Short explanation of what this package is for
           ui:options:
             rows: 5
+        category:
+          title: Category
+          type: string
+          description: Capability category
         owner:
           title: Owner
           type: string
@@ -43,7 +44,7 @@ spec:
             catalogFilter:
               kind: [Group, User]
 
-    - title: Application Repository Information
+    - title: Package Repository Information
       required:
         - repoUrl
         - repoBranch
@@ -60,54 +61,6 @@ spec:
           title: Repository Default Branch
           type: string
           default: main
-
-    - title: Java Project Metadata
-      required:
-        - groupId
-        - artifactId
-        - basePackage
-      properties:
-        groupId:
-          title: Group
-          type: string
-          description: Maven Group ID (e.g. io.kadras)
-          ui:autofocus: true
-        artifactId:
-          title: Artifact
-          type: string
-          description: Maven Artifact ID (e.g. demo)
-        basePackage:
-          title: Base Package
-          type: string
-          description: Base name for the Java package (e.g. io.kadras.demo)
-    
-    - title: Application Dependencies
-      required:
-        - llmProvider
-      properties:
-        llmProvider:
-          title: LLM Provider
-          type: string
-          description: Choose the large language model provider to integrate with
-          ui:autofocus: true
-          default: openai
-          enum:
-            - ollama
-            - openai
-          enumNames:
-            - "Ollama"
-            - "OpenAI"
-        vectorStore:
-          title: Vector Store
-          type: string
-          description: Choose the vector store to integrate with
-          default: weaviate
-          enum:
-            - chroma
-            - weaviate
-          enumNames:
-            - "ChromaDB"
-            - "Weaviate"
 
     - title: Deployment Information
       required:
@@ -133,13 +86,8 @@ spec:
         values:
           name: ${{ parameters.name }}
           description: ${{ parameters.description }}
+          category: ${{ parameters.category }}
           repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
-          groupId: ${{ parameters.groupId }}
-          artifactId: ${{ parameters.artifactId }}
-          basePackage: ${{ parameters.basePackage }}
-          basePackageDir: ${{ parameters.basePackage | replace(".", "/") }}
-          llmProvider: ${{ parameters.llmProvider }}
-          vectorStore: ${{ parameters.vectorStore }}
     
     - id: fetch-catalog-info
       name: Fetch Catalog Info
@@ -151,7 +99,7 @@ spec:
           description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
           repoUrl: ${{ parameters.repoUrl | parseRepoUrl }}
-          applicationType: service
+          applicationType: capability
           lifecycle: experimental
 
     - id: publish
@@ -163,10 +111,9 @@ spec:
         repoVisibility: private
         defaultBranch: ${{ parameters.repoBranch }}
         topics:
-          - java
-          - spring-boot
-          - langchain4j
-          - ai
+          - carvel
+          - package-management
+          - platform-engineering
 
     - id: register
       name: Register Catalog Entity

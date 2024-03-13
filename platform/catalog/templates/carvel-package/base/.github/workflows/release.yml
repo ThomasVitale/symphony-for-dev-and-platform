@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  - workflow_dispatch
+
+jobs:
+  release:
+    name: Release
+    permissions:
+      actions: read
+      contents: write
+      id-token: write
+      packages: write
+    uses: kadras-io/github-reusable-workflows/.github/workflows/package-release.yml@main
+    with:
+      package-name-slug: ${{ values.name }}
+      package-name-display: ${{ values.name }}
+      registry-server: ghcr.io
+      registry-username: ${{ '${{ github.actor }}' }}
+      image: ${{ '${{ github.repository }}' }}
+      version: 0.0.1
+    secrets:
+      pull-request-token: ${{ '${{ secrets.GH_ORG_PAT }}' }}
