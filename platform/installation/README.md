@@ -54,11 +54,11 @@ kubectl create secret generic developer-portal-secrets \
 
 ### 4. Configure the Platform
 
-The installation of the Kadras Engineering Platform can be configured via YAML. A `values-test.yml` file is provided in the current folder with configuration to customize the cloud installation of the platform, based on the `run` installation profile. Make sure to update the domain names included in the YAML file with one of yours.
+The installation of the Kadras Engineering Platform can be configured via YAML. A `values-staging.yml` file is provided in the current folder with configuration to customize the cloud installation of the platform, based on the `run` installation profile. Make sure to update the domain names included in the YAML file with one of yours.
 
 ### 5. Install the Platform
 
-Reference the `values-test.yml` file mentioned in the previous step and install the Kadras Engineering Platform.
+Reference the `values-staging.yml` file mentioned in the previous step and install the Kadras Engineering Platform.
 
   ```shell
   kctrl package install -i engineering-platform \
