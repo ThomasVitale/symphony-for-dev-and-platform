@@ -10,7 +10,5 @@ spec:
       prometheus.io/path: /actuator/prometheus
       prometheus.io/port: "8080"
     env:
-      - name: MANAGEMENT_TRACING_ENABLED
-        value: "true"
       - name: MANAGEMENT_OTLP_TRACING_ENDPOINT
         value: http://tempo.observability-stack.svc.cluster.local:4318/v1/traces

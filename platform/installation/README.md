@@ -92,6 +92,15 @@ kubectl create secret generic openai-secret \
   --namespace=kadras-system
 ```
 
+### 8. Accessing Grafana
+
+If you want to access Grafana, you can get the credentials from the dedicated Secret on the cluster.
+
+```shell script
+echo "Admin Username: $(kubectl get secret --namespace observability-stack loki-stack-grafana -o jsonpath="{.data.admin-user}" | base64 --decode)"
+echo "Admin Password: $(kubectl get secret --namespace observability-stack loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode)"
+```
+
 ## Local Installation
 
 ### 0. Before you begin
@@ -203,6 +212,15 @@ Then, store the API key in a dedicated Secret on the cluster.
 kubectl create secret generic openai-secret \
   --from-literal=api-key="${OPENAI_API_KEY}" \
   --namespace=kadras-system
+```
+
+### 9. Accessing Grafana
+
+If you want to access Grafana, you can get the credentials from the dedicated Secret on the cluster.
+
+```shell script
+echo "Admin Username: $(kubectl get secret --namespace observability-stack loki-stack-grafana -o jsonpath="{.data.admin-user}" | base64 --decode)"
+echo "Admin Password: $(kubectl get secret --namespace observability-stack loki-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode)"
 ```
 
 ## Run an Application via CLI

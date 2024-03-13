@@ -44,6 +44,7 @@ data:
           export:
             step: 5s
       tracing:
+        enabled: true
         sampling:
           probability: 1.0
   livenessProbe:
