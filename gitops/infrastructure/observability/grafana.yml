@@ -137,7 +137,7 @@ spec:
             hosts:
               - grafana.test.kadras.dev
       persistence:
-        enabled: true
+        enabled: false
       # See: https://github.com/grafana/helm-charts/issues/1746
       rbac:
         pspEnabled: false
