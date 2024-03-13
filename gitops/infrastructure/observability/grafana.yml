@@ -36,8 +36,13 @@ spec:
       repository: "grafana/tempo"
       tag: 2.4.0
 
-      server:
-        http_listen_port: 3100
+      reportingEnabled: false
+
+      metricsGenerator:
+        enabled: true
+        remoteWriteUrl: "http://prometheus/api/v1/write"
+      
+      retention: 1h
 
       receivers:
         otlp:
@@ -47,9 +52,8 @@ spec:
             http:
               endpoint: "0.0.0.0:4318"
       
-      reportingEnabled: false
-
-      retention: 1h
+      persistence:
+        enabled: true
 
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
