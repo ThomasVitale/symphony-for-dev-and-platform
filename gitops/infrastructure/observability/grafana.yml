@@ -98,6 +98,23 @@ spec:
         tag: 10.2.4
       service:
         type: ClusterIP
+      grafana.ini:
+        feature_toggles:
+          enable: tempoSearch tempoBackendSearch tempoApmTable traceToMetrics
+        server:
+          domain: grafana.test.kadras.dev
+      ingress:
+        enabled: true
+        ingressClassName: contour
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-http01-issuer
+        hosts:
+          - grafana.test.kadras.dev
+        tls:
+          enabled: true
+          secretName: grafana-tls-certificate
+      persistence:
+        enabled: true
       # See: https://github.com/grafana/helm-charts/issues/1746
       rbac:
         pspEnabled: false
