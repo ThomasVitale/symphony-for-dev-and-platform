@@ -8,6 +8,6 @@ resources:
   - ../../../apps/composer-assistant/config/workload.yml
 
 patches:
-  - path: patch-observability.yml
+  - path: patch-workload.yml
     target:
       kind: Workload

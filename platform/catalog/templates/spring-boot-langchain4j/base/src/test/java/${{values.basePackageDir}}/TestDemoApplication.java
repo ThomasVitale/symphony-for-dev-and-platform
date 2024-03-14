@@ -42,7 +42,7 @@ public class TestDemoApplication {
 	@RestartScope
 	@ServiceConnection
 	WeaviateContainer weaviate() {
-		return new WeaviateContainer("semitechnologies/weaviate:1.23.10");
+		return new WeaviateContainer("semitechnologies/weaviate:1.24.1");
 	}
 	{%- endif %}
 
