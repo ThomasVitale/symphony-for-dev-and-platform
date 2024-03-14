@@ -22,6 +22,9 @@ developer_portal:
   backstage:
     replicas: 2
     appConfig:
+      auth:
+        autologout:
+          enabled: false
       catalog:
         locations:
           - type: url
