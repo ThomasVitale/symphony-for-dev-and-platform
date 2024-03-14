@@ -12,6 +12,8 @@ langchain4j:
       api-key: ${OPENAI_API_KEY}
       log-requests: false
       log-responses: false
+  observations:
+    include-prompt-messages: true
 
 management:
   tracing:
