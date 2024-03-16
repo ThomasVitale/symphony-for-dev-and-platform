@@ -16,10 +16,9 @@ class VirtualInstrumentRepository {
             "piano", "NI Noire Piano",
             "strings", "Albion String",
             "brass", "Nucleus Brass",
-            "violin", "Taylor Davis Violin",
             "cello", "Tina Guo Cello",
             "percussions", "Darwin Percussions",
-            "drones", "Nucleus Drones",
+            "drones", "Symphobia Ominous Lows",
             "harp", "Lumina Harp"
     );
 
