@@ -154,6 +154,9 @@ spec:
         #! Metadata
         - type: PatchSet
           patchSetName: metadata
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.claimRef.name
+          toFieldPath: spec.forProvider.manifest.metadata.labels["app.kubernetes.io/component"]
         #! Pod Metadata
         - type: FromEnvironmentFieldPath
           fromFieldPath: annotations
