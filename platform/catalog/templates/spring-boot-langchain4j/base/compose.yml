@@ -9,7 +9,7 @@ services:
   {%- endif %}
   {%- if values.vectorStore == "weaviate" %}
   weaviate:
-    image: semitechnologies/weaviate:1.24.1
+    image: cr.weaviate.io/semitechnologies/weaviate:1.24.1
     command:
       - --host
       - 0.0.0.0
