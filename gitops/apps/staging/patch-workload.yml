@@ -4,7 +4,7 @@ kind: Workload
 metadata:
   name: composer-assistant
 spec:
-  image: ghcr.io/thomasvitale/composer-assistant:f0d8e90220425b57d6339336d59c55cdf5fda788
+  image: ghcr.io/thomasvitale/composer-assistant:825c49ecd6f21c12932598ee366546acc17984f4
   deployment:
     annotations:
       prometheus.io/scrape: "true"
