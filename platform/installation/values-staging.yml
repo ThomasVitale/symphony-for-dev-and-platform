@@ -9,7 +9,7 @@ platform:
     - weaviate
   
   ingress:
-    domain: staging.kadras.dev
+    domain: staging.thomasvitale.dev
     issuer:
       type: letsencrypt
       email: security@kadras.io
@@ -42,7 +42,7 @@ developer_portal:
   ingress:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-http01-issuer
-    host: backstage.staging.kadras.dev
+    host: backstage.staging.thomasvitale.dev
 
 flux:
   optional_components:
